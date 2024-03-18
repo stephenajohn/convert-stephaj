@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 
 
-def plot_interest_rates(df: pd.DataFrame, column: str) -> None:
+def plot_interest_rates(df: pd.DataFrame, column: str) -> tuple:
     """
     Plots the interest rate over time for a specified column.
 
@@ -29,10 +29,10 @@ def plot_interest_rates(df: pd.DataFrame, column: str) -> None:
     ax.set_title(f"{column}")
     ax.set_ylabel("Interest Rate (%)")
     ax.legend()
-    plt.show()
+    return fig, ax
 
 
-def plot_log_changes(df: pd.DataFrame) -> None:
+def plot_log_changes(df: pd.DataFrame) -> tuple:
     """
     Plots the log changes of interest rates over time.
 
@@ -53,4 +53,4 @@ def plot_log_changes(df: pd.DataFrame) -> None:
     ax.set_title("Log Change")
     ax.set_ylabel("Log Change")
     ax.legend()
-    plt.show()
+    return fig, ax

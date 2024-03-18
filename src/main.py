@@ -34,12 +34,12 @@ if __name__ == "__main__":
         processed_data.to_csv(os.path.join(args.output_dir, "processed_interest_rates.csv"))
 
     # Generate and save visualizations using series_id as the column name
-    visualization.plot_interest_rates(processed_data.copy(), args.series_id)
     if args.output_dir:
-        plt.savefig(os.path.join(args.output_dir, f"{args.series_id}_interest_rates_plot.png"))
-        plt.close()
+        fig, _ = visualization.plot_interest_rates(processed_data.copy(), args.series_id)
+        fig.savefig(os.path.join(args.output_dir, f"{args.series_id}_interest_rates_plot.png"))
+        plt.close(fig)
 
-    visualization.plot_log_changes(processed_data.copy())
     if args.output_dir:
-        plt.savefig(os.path.join(args.output_dir, f"{args.series_id}_log_changes_plot.png"))
-        plt.close()
+        fig, _ = visualization.plot_log_changes(processed_data)
+        fig.savefig(os.path.join(args.output_dir, f"{args.series_id}_log_changes_plot.png"))
+        plt.close(fig)
